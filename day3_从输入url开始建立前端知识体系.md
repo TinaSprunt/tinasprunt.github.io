@@ -180,27 +180,40 @@ DNS Prefetch 是一种 DNS 预解析技术，浏览器会**在加载网页时对
 ![](./images/26.jpg)
 
 
+## 2. TCP/IP连接：三次握手
+
+## 2.1 OSI、TCP/IP 模型
+
+> OSI : 物数网传会表应
+> TCP/IP： 网网传应
+
+![](./images/7.jpg)
 
 
+## 2.2 TCP/IP 协议
+
+> TCP/IP 协议不仅仅指的是 TCP 和 IP 两个协议
+> ⽽是指的⼀个由 FTP,SMTP,TCP,UDP,IP,ARP 等等协议构成的协议集合。
+
+![](./images/27.jpg)
 
 
+### 2.3 三次握手
 
+客服端和服务端在进行http请求和返回的工程中，需要创建一个TCP connection（由客户端发起）, **http 不存在连接这个概念，它只有请求和响应**。请求和响应都是数据包，它们之间的传输通道就是TCP connection。
 
+![](./images/28.jpg)
 
+位码即 **tcp 标志位**，有6种标示：
 
+- SYN(synchronous建立联机)
+- ACK(acknowledgement 确认)
+- PSH(push传送)
+- FIN(finish结束)
+- RST(reset重置)
+- URG(urgent紧急)
 
-
-
-
-
-
-
-
-
-
-
-
-
+未完待续……
 
 
 
