@@ -213,9 +213,6 @@ DNS Prefetch 是一种 DNS 预解析技术，浏览器会**在加载网页时对
 - RST(reset重置)
 - URG(urgent紧急)
 
-未完待续……
-
-
 
 
 
