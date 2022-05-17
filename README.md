@@ -18,6 +18,8 @@
 
 [4.盒模型、css选择器](day4_盒模型、css选择器.md)
 
+[5.重排（reflow）和重绘（repaint）的理解](day5_重排（reflow）和重绘（repaint）的理解.md)
+
 
 
 

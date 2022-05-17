@@ -65,7 +65,7 @@ html body #nav .selected > a:hover  /* 结果： (0, 1, 2, 3) */
 > 2. 如果相等，则继续往右移动一位进行比较 
 > 3. 如果4位全部相等，则后面的会覆盖前面的
 
-例子：
+例如：
 
 ```css
 #nav .selected > a:hover            /* 1号 (0, 1, 2, 1) */
@@ -75,7 +75,23 @@ html body #nav .selected > a:hover  /* 2号 (0, 1, 2, 3) */
 /*比较结果是：2号优先级大于1号*/
 ```
 
+#### 不同属性样式不能进行优先级比较
 
+对于同属性样式来说，内联样式 + !important 已经是最高优先级， 再写任何外部样式覆盖都将无法生效。
+但是对于不同属性样式则不受限制
+
+例如：
+
+```js
+<div class="box" style="background: #f00; width: 300px!important;">我的宽度最后是100px<div>
+
+.box {
+	max-width: 100px;
+}
+```
+
+max-width: 100px 可以超越内联的 width: 300px !important
+实际上不是优先级的问题，因为**优先级是比较相同属性**的，而 **max-width 和 width 是两个不同的属性**
 
 
 
