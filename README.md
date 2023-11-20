@@ -20,4 +20,4 @@
 
 [5.重排（reflow）和重绘（repaint）的理解](day5_重排（reflow）和重绘（repaint）的理解.md)
 
-[6.对（BFC）的理解](./对（BFC）的理解.md)
+[6.对（BFC）的理解](./day6_对（BFC）的理解.md)
