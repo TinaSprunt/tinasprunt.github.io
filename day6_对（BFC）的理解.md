@@ -213,8 +213,8 @@ BFC 除了创建隔离空间，还具有以下特性：示例参见每个特性�
 BFC 内部的浮动元素也会参与高度计算，可以清除 BFC 内部的浮动 [demo3](https://codepen.io/tinasprunt/pen/eYxVPvg?editors=1100)
 
 
-参考文献：
-https://juejin.cn/post/6960866014384881671
-https://juejin.cn/post/7061588533214969892
-https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
-https://blog.csdn.net/ywforever/article/details/125133371
+## 参考文献：
+- https://juejin.cn/post/6960866014384881671
+- https://juejin.cn/post/7061588533214969892
+- https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
+- https://blog.csdn.net/ywforever/article/details/125133371
