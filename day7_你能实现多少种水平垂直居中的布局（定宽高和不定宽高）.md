@@ -2,7 +2,7 @@
 
 ## 一、定宽高
 
-### 绝对定位 + 负 margin 值
+### 1. 绝对定位 + 负 margin 值
 
 ```vue
 <template>
@@ -32,7 +32,7 @@
 </style>
 ```
 
-### 绝对定位 + transform
+### 2. 绝对定位 + transform
 
 > transform 只能转换由盒模型定位的元素
 
@@ -75,7 +75,7 @@
 </style>
 ```
 
-### 绝对定位 + left/right/bottom/top + margin
+### 3.绝对定位 + left/right/bottom/top + margin
 
 ```vue
 <template>
@@ -106,7 +106,7 @@
 </style>
 ```
 
-### flex 布局
+### 4. flex 布局
 
 > display 属性设置元素是否被视为块或者内联元素以及用于子元素的布局，例如流式布局（默认的布局方式）、网格布局（ grid ）或弹性布局（ flex ）。
 > 参考： https://www.runoob.com/cssref/pr-class-display.html
@@ -136,7 +136,7 @@
 </style>
 ```
 
-### grid 布局
+### 5. grid 布局
 
 ```vue
 <template>
@@ -162,7 +162,7 @@
 </style>
 ```
 
-### table-cell + vertical-align + inline-block/margin: auto
+### 6. table-cell + vertical-align + inline-block/margin: auto
 
 ```vue
 <template>
@@ -191,9 +191,9 @@
 </style>
 ```
 
-## 不定宽高
+## 二、不定宽高
 
-### 绝对定位 + transform
+### 1. 绝对定位 + transform
 
 ```vue
 <template>
@@ -215,36 +215,249 @@
   background: yellow;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
 </style>
 ```
 
-### table-cell
+### 2. table-cell
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">111111</div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: table-cell; /**作为表格的一个单元格显示*/
+  text-align: center; /**文本的横向居中*/
+  vertical-align: middle;
+}
+.children-box {
+  background: yellow;
+  display: inline-block; /*行内块元素*/
+}
+</style>
+```
 
+### 3. flex 布局
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">11111111</div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.children-box {
+  background: yellow;
+}
+</style>
+```
 
+### 4. flex + margin
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">11111111</div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: flex; /**父元素 flex*/
+}
+.children-box {
+  background: yellow;
+  margin: auto; /**子元素 margin auto 自适应*/
+}
+</style>
+```
 
+### 5. grid + flex 布局
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">11111111</div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: grid; /**父元素 grid*/
+}
+.children-box {
+  background: yellow;
+  align-self: center; /**设置单个子元素的交叉轴（纵轴）对齐方式 */
+  justify-self: center; /**设置单个子元素的主轴（横轴）对齐方式 */
+}
+</style>
+```
 
+### 6. grid + margin
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">11111111</div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  display: grid;
+}
+.children-box {
+  background: yellow;
+  margin: auto;
+}
+</style>
+```
 
+### 7. writing-mode 属性布局
 
+> 仅仅针对文本
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <div class="children-box">
+        <p>11111</p>
+      </div>
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  writing-mode: vertical-lr; /**垂直方向内内容从上到下，水平方向从左到右*/
+  text-align: center; /**文本水平居中*/
+}
 
+.box > .children-box {
+  writing-mode: horizontal-tb; /**水平方向自上而下的书写方式*/
+  display: inline-block;
+  text-align: center;
+  width: 100%; /**横向填充满整个父元素*/
+  background: yellow;
+}
 
+.box > .children-box > p {
+  display: inline-block; /**行内块元素 */
+  background: yellow;
+}
+</style>
+```
 
+- horizontal-tb：水平方向自上而下的书写方式。即 left-right-top-bottom
+- vertical-rl：垂直方向自右而左的书写方式。即 top-bottom-right-left
+- vertical-lr：垂直方向内内容从上到下，水平方向从左到右
+- sideways-rl：内容垂直方向从上到下排列
+- sideways-lr：内容垂直方向从下到上排列
 
+## 三、图片（定高/不定高水平垂直居中）
 
+### 1. table-cell + text-align + vertical-align
 
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <img
+        src="https://ss1.baidu.com/70cFfyinKgQFm2e88IuM_a/forum/pic/item/242dd42a2834349b406751a3ceea15ce36d3beb6.jpg"
+      />
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  height: 200px;
+  width: 200px;
+  display: table-cell;
+  text-align: center;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+</style>
+```
 
+### 2. ::before
 
+- `[]` 是属性选择器 
+参考：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors
 
+- `:` 是伪类，`::` 是伪元素
+参考：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements
 
+- `>` 是子代关系选择器， `+` 是兄弟关系选择器
+参考：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Combinators
 
-## display 特性补充
+```vue
+<template>
+  <div id="app">
+    <div class="box">
+      <img
+        src="https://ss1.baidu.com/70cFfyinKgQFm2e88IuM_a/forum/pic/item/242dd42a2834349b406751a3ceea15ce36d3beb6.jpg"
+      />
+    </div>
+  </div>
+</template>
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  text-align: center; /**父元素水平居中 */
+}
+
+/**在 父元素之前 放置行内块的伪元素，并纵向居中 */
+.box::before {
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  height: 100%;
+}
+
+img {
+  vertical-align: middle; /**子元素水平居中 */
+}
+</style>
+```
+
+## 四、display 特性补充
 
 - none 此元素不会被显示。
 - block 此元素将显示为块级元素，此元素前后会带有换行符。
@@ -265,7 +478,39 @@
 - table-caption 此元素会作为一个表格标题显示（类似 `<caption>`）
 - inherit 规定应该从父元素继承 display 属性的值。
 
-### 参考文档
+## 五、总结
+
+(1) 内联元素布局居中
+
+1. 水平居中
+
+- 行内元素设置 text-align: center;
+- flex布局设置父元素 display: flex; justify-content: center;
+
+2. 垂直居中
+
+- 单行文本父元素确认高度 height === line-height
+- 多行文本父元素确认高度 display: table-cell; vertical-align: middle;
+
+(2) 块级元素居中布局
+
+1. 水平居中
+
+- 定宽：margin: 0 auto;
+- 不定宽：justify-content: center;
+
+2. 垂直居中
+
+- position: absolute 设置 left、top、margin-left、margin-top(定高)
+- position: fixed 设置 margin: auto(定高)
+- display: table-cell
+- transform: translate(x,y)
+- flex (不定高，不定宽)
+- grid (不定高，不定宽)，兼容性不太好
+
+
+
+### 六、参考文档
 
 - https://juejin.cn/post/6844903982960214029
 - https://juejin.cn/post/7061588533214969892
