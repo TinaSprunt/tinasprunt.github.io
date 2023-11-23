@@ -35,13 +35,16 @@
 ```
 
 - nowrap 默认，不换行
-  ![nowrap](./images/d8_2.png)
+
+![nowrap](./images/d8_2.png)
 
 - wrap 换行，第一行在最上
-  ![wrap](./images/d8_3.png)
+
+![wrap](./images/d8_3.png)
 
 - wrap-reverse 换行，第一行在最下
-  ![wrap-reverse](./images/d8_4.png)
+
+![wrap-reverse](./images/d8_4.png)
 
 ### 3. flex-flow
 
