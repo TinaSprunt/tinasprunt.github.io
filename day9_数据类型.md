@@ -1,6 +1,6 @@
 # 数据类型
 
-## js 数据类型
+## 一、js 数据类型
 
 - Null
 - Undefined
@@ -185,7 +185,7 @@ console.log(symbol5 === symbol6); // 结果 false
 
 ### Object
 
-## 类型判断
+## 二、类型判断
 
 1. typeof：能判断所有值类型，函数。不可对 null、对象、数组进行精确判断，因为都返回 object
 
@@ -231,7 +231,7 @@ Object.prototype.toString.call([]); // "[object Array]"
 Object.prototype.toString.call(function () {}); // "[object Function]"
 ```
 
-## 类型判断实践
+## 三、类型判断实践
 
 如何判断一个变量为数组
 
@@ -251,7 +251,7 @@ arr instanceof Array; // true
 Object.prototype.toString.call(arr); // "[object Array]"
 ```
 
-## 参考资料
+## 四、参考资料
 
 - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures
 - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#string_%E7%B1%BB%E5%9E%8B
