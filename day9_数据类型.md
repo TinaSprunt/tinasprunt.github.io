@@ -164,7 +164,7 @@ console.log(symbol2); // 结果 Symbol(42)
 
 ```js
 const symbol3 = Symbol(42);
-console.log(symbol3 === 42); // 结果 falsem，不可修改
+console.log(symbol3 === 42); // 结果 false，不可修改
 
 const symbol4 = Symbol("foo");
 console.log(
