@@ -25,15 +25,28 @@ Boolean 类型有 2 个值，true 和 false
 
 ### Number
 
-1. Number 类型可以安全存储以下范围内的数字
+1. 创建方式
+
+- 使用 `let xxx = 1` 新建 number (创出来的是 number 原始值)
+- 使用 `let xxx = new Number(1)` 函数创建（创出来的是 number 对象，MMDN 官方建议尽量不要这样用）
+
+```js
+let a = 1
+let b = new Number(1)
+
+console.log(typeof a, a); // number 1 
+console.log(typeof b, b); // object Number {1}
+```
+
+2. Number 类型可以安全存储以下范围内的数字
 
 - `2的-1074次方`（Number.MIN_VALUE）和 `2的1024次方`（Number.MAX_VALUE）之间的正浮点数
 - `-2的-1074次方`（Number.MIN_VALUE）和 `-2的1024次方`（Number.MAX_VALUE）之间的负浮点数
 - `-(2的53次方 − 1)`（Number.MIN_SAFE_INTEGER）到 `2的53次方 − 1`（Number.MAX_SAFE_INTEGER）范围内的整数
 
-2. 检查数字是否在安全范围方法 `Number.isSafeInteger(x)`
+3. 检查数字是否在安全范围方法 `Number.isSafeInteger(x)`
 
-3. `NaN`是运算结果不表示数字时的结果，也是 js 中唯一不等于自身的值
+4. `NaN`是运算结果不表示数字时的结果，也是 js 中唯一不等于自身的值
 
 ### BigInt
 
@@ -117,12 +130,12 @@ console.log(y.toJSON()); // 1
 1. 创建方式
 
 - 使用 `''` 或 `""` 新建字符串(创出来的是字符串原始值)
-- 使用 `new String()` 函数创建（创出来的是字符串对象）
+- 使用 `new String()` 函数创建（创出来的是字符串对象，MMDN 官方建议尽量不要这样用）
 
 ```js
 const s1 = "2 + 2";
 const s2 = new String("2 + 2");
-const s3 = s2.valueOf(); // 可以使用 valueOf 转换为原始值
+const s3 = s2.valueOf(); // String 对象始终可以使用 valueOf() 方法将其转换为对应的原始值
 
 console.log(s1); // 结果 2 + 2
 console.log(s2); // 结果 String {'2 + 2'}
