@@ -142,7 +142,6 @@ function getDataType(target) {
 2. 分类进行拷贝
 
 ```js
-// 还有问题待修改
 function clone(target, map = new Map()) {
   if (typeof target !== "object") {
     return target;
@@ -157,19 +156,38 @@ function clone(target, map = new Map()) {
     result = [];
   }
 
+  console.log(getDataType(target));
+  // 防止循环引用
   map.set(target, result);
 
   for (const key in target) {
-    if (target.hasOwnProperty.call(key)) {
+    // 保证 key 不是原型属性
+    if (Object.hasOwn(target, key)) {
       result[key] = clone(target[key], map);
+      console.log(result[key], " console.log(result[key])");
     }
   }
 
   return result;
 }
+
+let res = clone(target);
+
+target.a2 = null;
+target.a4.info = "我是新的 info 222";
+target.a3[2].childName = "我是新的 childName";
+target.a7 = 1n;
+
+console.log(res, "copy res");
+console.log(target, "target");
 ```
+
+> hasOwnProperty 已经逐渐废弃，官方建议使用 Object.hasOwn()
+> 原型属性（prototype 属性）与 实例属性（自身属性）
 
 ## 参考文献
 
 - https://juejin.cn/post/7061588533214969892
 - https://juejin.cn/post/6844903929705136141
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
