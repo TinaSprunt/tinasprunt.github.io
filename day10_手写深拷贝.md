@@ -185,10 +185,11 @@ console.log(target, "target");
 ![多种数据类型兼容深拷贝](./images/d10_5.png)
 
 > hasOwnProperty 已经逐渐废弃，官方建议使用 Object.hasOwn()
-> 原型属性（prototype 属性）与 实例属性（自身属性）
+> 原型属性（prototype 属性）
+> 实例属性（自身属性）
 
 
-## 参考文献
+## 三、参考文献
 
 - https://juejin.cn/post/7061588533214969892
 - https://juejin.cn/post/6844903929705136141
