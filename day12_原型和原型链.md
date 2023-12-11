@@ -68,6 +68,7 @@ Foo.prototype.constructor == Foo; // 结果true
 ```
 
 #### 原型的原型
+
 以下待修改
 
 ```js
