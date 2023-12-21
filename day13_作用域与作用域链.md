@@ -83,6 +83,145 @@ console.log(undefVariable); // 结果 undefined variable
 
 例如 window.name、window.location、window.top 等等，更多 windowns 属性见 [MDN Window](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)
 
+### 函数作用域
+
+在函数内部声明的变量，作用域是该函数内
+
+**作用域分层：内层作用域，可以访问外层作用域的变量，外层作用域不可以访问内层作用域**
+
+```js
+function foo(a) {
+  var b = a * 2;
+  function bar(c) {
+    console.log(a, b, c);
+  }
+  bar(b * 3);
+}
+foo(2); // 结果 2 4 12
+```
+
+![作用域分层](./images/day13_1.png)
+
+如上例子，共有 3 层作用域
+
+- 1 绿色部分是全局作用域（最外层函数产生全局作用域），该作用域拥有一个函数 foo
+- 2 黄色部分作用域是 foo 函数内部，该作用域拥有一个自定义的变量 b , 一个外部传入的变量 a , 一个函数 bar
+- 3 蓝色部分作用域是 bar 函数内部，该作用域有一个外部传入的变量 c
+
+**块语句（大括号“{}”中间的语句）不会创建新的作用域， 比如 if 语句、swtich 语句、for 循环语句、while 循环语句**
+
+```js
+// if 语句不会创建作用域，
+if (true) {
+  var a = 12; // a 属于最外层函数外定义的变量，所以在全局作用域中
+}
+```
+
+### 块级作用域
+
+ES6 之后，js 支持块级作用域，块级作用域内部的变量只能在指定块内部访问
+
+**如何产生块级作用域**
+
+- 使用 let 声明变量
+- 使用 const 声明变量
+
+**块级作用域范围**
+
+- 一个函数内部
+- 一个代码块（即一对大括号“{}”）内部
+
+**let/const 声明不会被提升到当前代码块顶部**
+
+```js
+function test(status) {
+  if (status) {
+    // console.log(res) // 结果 Cannot access 'res' before initialization，即 res 在此处还没定义不可访问
+    let res = "blue";
+    // console.log(res); // 结果 blue res 在此处可用
+  } else {
+    // console.log(res) // 结果 res is not defined，即 res 在此处无法访问
+  }
+  // console.log(res); // 结果 res is not defined，即 res 在此处无法访问
+}
+test(true); // 尝试传递 true 以及 false 分别试试
+```
+
+**禁止重复声明**
+
+同一作用域下，不能重复声明一个已有的标识符
+
+```js
+let name = "hohina";
+var name = "yoko"; // 报错 Uncaught SyntaxError: Identifier 'name' has already been declared
+```
+
+**for 循环中 let 声明的 i 每一轮都是新的 i**
+
+使用 let 声明的 i ，仅在块级作用域内有效，最后输出的是 6
+
+```js
+var arr = [];
+for (let i = 0; i < 10; i++) {
+  arr[i] = function() {
+    console.log(i);
+    return i
+  }
+}
+arr[6](); // 结果 6
+```
+
+使用 var 声明的 i ，在全局作用域内有效，最后输出的是 10
+
+```js
+var arr = [];
+for (var i = 0; i < 10; i++) {
+  arr[i] = function() {
+    console.log(i);
+    return i
+  }
+}
+arr[6](); // 结果 10
+```
+
+> Q: 每一轮循环变量的 i 都是重新声明的，那么怎么知道上一轮循环的值，从而计算当前的值
+> A: js引擎内部会记住上一轮的值，然后在上一轮的基础上进行初始化
+
+**for 循环中的 循环变量 i 与 内部变量i 不在同一个作用域**
+
+- 循环变量 i 在父作用域
+- 内部变量 i 在子作用域
+
+```js
+for (let i = 0; i < 3; i++) {
+  let i = "sass"
+  console.log(i); // 结果 输出 3 遍 sass
+}
+```
+
+**父子作用域存在同名变量不会报错，但子作用域优先级高于父优先级，父作用域的同名变量将不再可以显式访问**
+
+```js
+for (let i = 0; i < 3; i++) {
+  console.log(i); // 报错 Cannot access 'i' before initialization
+  let i = "sass"
+  console.log(i);
+}
+```
+
+```js
+for (let i = 0; i < 3; i++) {
+  console.log(i); // 结果 0 1 2
+}
+```
+
+```js
+for (let i = 0; i < 3; i++) {
+  console.log(i); // 0 1 2
+  let o = "sass"
+  console.log(o); // 结果 输出 3 遍 sass
+}
+```
 
 ## 参考文献
 
