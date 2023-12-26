@@ -222,9 +222,9 @@ for (let i = 0; i < 3; i++) {
   console.log(o); // 结果 输出 3 遍 sass
 }
 ```
+## 三、作用链
 
-
-## 参考文献
+## 四、参考文献
 
 - https://github.com/mqyqingfeng/Blog/issues/3
 - https://juejin.cn/post/6844903797135769614
