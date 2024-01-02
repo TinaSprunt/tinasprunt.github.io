@@ -163,10 +163,10 @@ var name = "yoko"; // 报错 Uncaught SyntaxError: Identifier 'name' has already
 ```js
 var arr = [];
 for (let i = 0; i < 10; i++) {
-  arr[i] = function() {
+  arr[i] = function () {
     console.log(i);
-    return i
-  }
+    return i;
+  };
 }
 arr[6](); // 结果 6
 ```
@@ -176,25 +176,25 @@ arr[6](); // 结果 6
 ```js
 var arr = [];
 for (var i = 0; i < 10; i++) {
-  arr[i] = function() {
+  arr[i] = function () {
     console.log(i);
-    return i
-  }
+    return i;
+  };
 }
 arr[6](); // 结果 10
 ```
 
 > Q: 每一轮循环变量的 i 都是重新声明的，那么怎么知道上一轮循环的值，从而计算当前的值
-> A: js引擎内部会记住上一轮的值，然后在上一轮的基础上进行初始化
+> A: js 引擎内部会记住上一轮的值，然后在上一轮的基础上进行初始化
 
-**for 循环中的 循环变量 i 与 内部变量i 不在同一个作用域**
+**for 循环中的 循环变量 i 与 内部变量 i 不在同一个作用域**
 
 - 循环变量 i 在父作用域
 - 内部变量 i 在子作用域
 
 ```js
 for (let i = 0; i < 3; i++) {
-  let i = "sass"
+  let i = "sass";
   console.log(i); // 结果 输出 3 遍 sass
 }
 ```
@@ -204,7 +204,7 @@ for (let i = 0; i < 3; i++) {
 ```js
 for (let i = 0; i < 3; i++) {
   console.log(i); // 报错 Cannot access 'i' before initialization
-  let i = "sass"
+  let i = "sass";
   console.log(i);
 }
 ```
@@ -218,12 +218,12 @@ for (let i = 0; i < 3; i++) {
 ```js
 for (let i = 0; i < 3; i++) {
   console.log(i); // 0 1 2
-  let o = "sass"
+  let o = "sass";
   console.log(o); // 结果 输出 3 遍 sass
 }
 ```
-## 三、作用链
 
+## 三、作用链
 
 ## 四、参考文献
 
