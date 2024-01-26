@@ -180,6 +180,13 @@ data[0]Context = {
 }
 ```
 
-于是 `data[0]` 自己的上下文  `data[0]Context` 中找不到 i， 顺着作用链往上找，就找到的是 `匿名函数Context` 的 AO 中的 i , 输出 0
+于是 `data[0]();` 自己的上下文  `data[0]Context` 中找不到 i， 顺着作用链往上找，就找到的是 `匿名函数Context` 的 AO 中的 i , 输出 0
 
-`data[1]` 和 `data[2]` 同理，**因为都不是自己的上下文中找到的 i 的值，都是取的各自的上下文中的作用域链中 `匿名函数Context` 的 VO 的 i 值**
+`data[1]()` 和 `data[2]()` 同理，**因为都不是自己的上下文中找到的 i 的值，都是取的各自的上下文中的作用域链中 `匿名函数Context` 的 VO 的 i 值**, 所以 `data[1]()` 输出 1 , `data[2]()` 输出 2
+
+
+## 参考文献
+
+- https://github.com/mqyqingfeng/Blog/issues/9
+- https://javascript.ruanyifeng.com/oop/this.html
+- https://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
