@@ -43,3 +43,5 @@
 [5.作用域与作用域链](./day13_作用域与作用域链.md)
 
 [6.闭包的简单理解](./day14_闭包的简单理解.md)
+
+[7.call、apply、bind 实现](./day15_call、apply、bind实现.md)
