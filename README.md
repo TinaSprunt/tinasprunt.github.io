@@ -45,3 +45,5 @@
 [6.闭包的简单理解](./day14_闭包的简单理解.md)
 
 [7.call、apply、bind 实现](./day15_call、apply、bind实现.md)
+
+## k8s 资料
